@@ -1,14 +1,37 @@
-// src/app/about/page.tsx
+"use client";
 
-import Image from 'next/image';
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function AboutPage() {
+  const [team, setTeam] = useState([]);
+
+  useEffect(() => {
+    // Fetch team data from API route
+    async function fetchTeam() {
+      const response = await fetch("/api/team");
+      const data = await response.json();
+      setTeam(data);
+    }
+    fetchTeam();
+  }, []);
+
   return (
     <main className="bg-white text-gray-900">
-      {/* Section: Our Mission */}
+      {/* Section: Header */}
+      <header className="bg-gradient-to-r from-blue-500 to-teal-400 text-white py-16">
+        <div className="container mx-auto text-center">
+          <h1 className="text-4xl font-bold">About Us</h1>
+          <p className="text-lg mt-4">
+            Discover our mission, vision, and the innovative approach we take to leadership development.
+          </p>
+        </div>
+      </header>
+
+      {/* Section: Our Mission and Vision */}
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl font-bold mb-4">Our Mission and Vision</h1>
+          <h2 className="text-3xl font-bold mb-6">Our Mission and Vision</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             Ting Global Academy was founded with a vision to transform traditional leadership training.
             We believe that effective leadership in the 21st century benefits from an evolved approach—one that is personalized, enhanced by technology, and rooted in ethical, equitable, and sustainable decision-making.
@@ -16,23 +39,50 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Section: Our Story */}
+      {/* Section: The 5 Ws and H */}
       <section className="py-16">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-8">Our Story</h2>
-          <p className="text-center text-gray-700 max-w-3xl mx-auto">
-            Ting Global Academy was established to redefine leadership for the digital era. By blending the capabilities of AI with insights from global thought leaders, we offer personalised learning journeys that develop the leaders the world needs.
-          </p>
-        </div>
-      </section>
-
-      {/* Section: Vision for Leadership */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-8">Vision for Leadership</h2>
-          <p className="text-center text-gray-700 max-w-3xl mx-auto">
-            Our vision is to nurture leaders skilled in navigating technological and global challenges, with a commitment to making positive, sustainable impacts in their communities and organizations.
-          </p>
+          <h2 className="text-3xl font-bold text-center mb-8">The 5 Ws and H</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white shadow-md rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-teal-600 mb-4">Why ❓</h3>
+              <ul className="list-disc list-inside text-gray-700 space-y-2">
+                <li>Ting Global Academy pioneers the integration of AI and personalized learning paths.</li>
+                <li>Offers immersive simulations and profit-sharing opportunities.</li>
+                <li>Empowers leaders to collaboratively shape the future of sustainable leadership.</li>
+              </ul>
+            </div>
+            <div className="bg-white shadow-md rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-teal-600 mb-4">Who ❓</h3>
+              <p className="text-gray-700">
+                Designed for professionals, entrepreneurs, students, and anyone looking to discover their purpose and enhance their leadership skills.
+              </p>
+            </div>
+            <div className="bg-white shadow-md rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-teal-600 mb-4">What ❓</h3>
+              <p className="text-gray-700">
+                Offers an AI-Enhanced Leadership Training Program that integrates advanced technology with immersive simulations and collaborative learning.
+              </p>
+            </div>
+            <div className="bg-white shadow-md rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-teal-600 mb-4">When ❓</h3>
+              <p className="text-gray-700">
+                The program is available year-round, allowing participants to start their learning journey at their convenience.
+              </p>
+            </div>
+            <div className="bg-white shadow-md rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-teal-600 mb-4">Where ❓</h3>
+              <p className="text-gray-700">
+                Operates entirely online, fostering a global community of learners and leaders.
+              </p>
+            </div>
+            <div className="bg-white shadow-md rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-teal-600 mb-4">How ❓</h3>
+              <p className="text-gray-700">
+                Participants join through an application process and engage with AI avatars, immersive simulations, and collaborative labs.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -41,21 +91,24 @@ export default function AboutPage() {
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-center mb-8">Meet the Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="text-center">
-              <Image src="/team-member1.jpg" alt="Ben Goertzel" width={150} height={150} className="rounded-full mx-auto" />
-              <h3 className="text-xl font-semibold mt-4">Ben Goertzel</h3>
-              <p className="text-gray-600">Co-Founder</p>
-            </div>
-            <div className="text-center">
-              <Image src="/team-member2.jpg" alt="David Hanson" width={150} height={150} className="rounded-full mx-auto" />
-              <h3 className="text-xl font-semibold mt-4">David Hanson</h3>
-              <p className="text-gray-600">Co-Founder</p>
-            </div>
-            <div className="text-center">
-              <Image src="/team-member3.jpg" alt="Sophia Robot" width={150} height={150} className="rounded-full mx-auto" />
-              <h3 className="text-xl font-semibold mt-4">Sophia Robot</h3>
-              <p className="text-gray-600">Renowned Thought Leader</p>
-            </div>
+            {team.length > 0 ? (
+              team.map((member) => (
+                <div key={member.id} className="text-center bg-gray-100 rounded-lg p-6 shadow-md">
+                  <Image
+                    src={`/images/team-member.WEBP`}
+                    alt={member.name}
+                    width={150}
+                    height={150}
+                    className="rounded-full mx-auto"
+                  />
+                  <h3 className="text-xl font-semibold mt-4">{member.name}</h3>
+                  <p className="text-gray-600">{member.position}</p>
+                  <p className="text-gray-500 text-sm mt-2">{member.description}</p>
+                </div>
+              ))
+            ) : (
+              <p className="text-gray-600 text-center col-span-full">Loading team data...</p>
+            )}
           </div>
         </div>
       </section>

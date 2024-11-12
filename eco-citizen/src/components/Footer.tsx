@@ -1,4 +1,6 @@
+
 import Link from 'next/link';
+import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -10,12 +12,19 @@ export default function Footer() {
           <Link href="/terms-of-service" className="hover:text-gray-400">Terms of Service</Link>
           <Link href="/contact" className="hover:text-gray-400">Contact Us</Link>
         </div>
-        <div className="mt-4 space-x-4">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Facebook</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Twitter</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">LinkedIn</a>
+        <div className="mt-4 flex justify-center space-x-4">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
+            <FaFacebook size={24} />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
+            <FaTwitter size={24} />
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
+            <FaLinkedin size={24} />
+          </a>
         </div>
       </div>
     </footer>
   );
 }
+
